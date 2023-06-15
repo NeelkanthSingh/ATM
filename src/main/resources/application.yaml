@@ -1,0 +1,19 @@
+spring:
+  #Postgresql properties
+  datasource:
+    url: jdbc:postgresql://192.168.1.28:5432/postgres
+    username: amigoscode
+    password: password
+    driver-class-name: org.postgresql.Driver
+  #MongoDB properties
+  #JPA properties
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+

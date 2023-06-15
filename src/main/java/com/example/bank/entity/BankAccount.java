@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class BankAccount{
 
-    @Idgit
+    @Id
     @GeneratedValue
     private Integer accountID;
     private LocalDateTime createdAt;

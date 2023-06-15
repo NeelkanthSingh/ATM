@@ -24,4 +24,5 @@ public class User {
     private String city;
     @Column(unique = true)
     private Long phoneNumber;
+    private String password;
 }

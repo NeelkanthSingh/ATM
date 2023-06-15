@@ -1,6 +1,5 @@
 package com.example.bank.utility;
 
-import com.example.bank.utility.PasswordValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 import java.lang.annotation.*;

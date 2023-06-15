@@ -8,6 +8,7 @@ import com.example.bank.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,6 +18,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final BankController bankController;
+    private final PasswordEncoder passEncoder;
 
     public ResponseEntity<String> registerUser(UserModel userModel) throws RuntimeException{
         User user = User.builder()
@@ -26,6 +28,7 @@ public class UserService {
                 .city(userModel.getCity())
                 .phoneNumber(userModel.getPhoneNumber())
                 .gender(userModel.getGender())
+                .password(passEncoder.encode(userModel.getPassword()))
                 .build();
 
         log.info(user.toString());

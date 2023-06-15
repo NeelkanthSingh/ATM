@@ -16,10 +16,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer UserID;
     private String name;
+    @Column(unique = true)
     private String email;
     private Integer age;
     @Enumerated(EnumType.STRING)
     private Gender gender;
     private String city;
+    @Column(unique = true)
     private Long phoneNumber;
 }

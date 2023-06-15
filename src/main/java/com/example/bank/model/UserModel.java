@@ -1,4 +1,5 @@
 package com.example.bank.model;
+import com.example.bank.utility.ValidPassword;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -28,4 +29,8 @@ public class UserModel {
     @DecimalMin(value = "1000000000")
     @DecimalMax(value = "9999999999")
     private Long phoneNumber;
+
+    @NotBlank
+    @ValidPassword
+    private String password;
 }

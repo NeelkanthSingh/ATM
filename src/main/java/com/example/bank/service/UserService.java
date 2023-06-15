@@ -1,5 +1,6 @@
 package com.example.bank.service;
 
+import com.example.bank.controller.BankController;
 import com.example.bank.entity.User;
 import com.example.bank.exception.SQLException;
 import com.example.bank.model.UserModel;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final BankController bankController;
 
     public ResponseEntity<String> registerUser(UserModel userModel) throws RuntimeException{
         User user = User.builder()
@@ -30,9 +32,16 @@ public class UserService {
         try{
             userRepository.save(user);
         }catch (RuntimeException ex){
-            throw new SQLException("Failed to save the user information", ex.getCause());
+            throw new SQLException("User cannot be registered", ex.getCause());
         }
 
-        return ResponseEntity.ok("User is registered");
+        try {
+            bankController.openBankAccount(user);
+        } catch (RuntimeException ex){
+            log.info("User is registered");
+            throw new RuntimeException("User is registered but bank account could not be opened", ex.getCause());
+        }
+
+        return ResponseEntity.ok("User is registered and Bank account is opened");
     }
 }

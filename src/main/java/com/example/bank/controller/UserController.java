@@ -23,7 +23,7 @@ public class UserController {
             return userService.registerUser(userModel);
         } catch (RuntimeException ex) {
             log.error("Following exception found: " + ex.getMessage());
-            return ResponseEntity.status(500).body("Internal Server Error");
+            return ResponseEntity.status(500).body(ex.getMessage());
         }
     }
 }

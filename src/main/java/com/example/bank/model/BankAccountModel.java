@@ -3,6 +3,7 @@ package com.example.bank.model;
 import com.example.bank.entity.User;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -13,11 +14,11 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class BankAccountModel {
 
-    @NotBlank
+    @NotNull
     private LocalDateTime createdAt;
-    @NotBlank
+    @NotNull
     private Boolean isActive;
     private Integer balance=0;
-    @NotBlank
+    @NotNull
     private User user;
 }

@@ -1,6 +1,7 @@
 package com.example.bank.model;
 
 import com.example.bank.entity.User;
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -16,7 +17,8 @@ public class BankAccountModel {
     private LocalDateTime createdAt;
     @NotNull
     private Boolean isActive;
-    private Integer balance=0;
+    private Integer balance;
     @NotNull
     private User user;
+
 }

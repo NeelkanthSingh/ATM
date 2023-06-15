@@ -23,6 +23,7 @@ public class BankService {
                 .createdAt(LocalDateTime.now())
                 .isActive(true)
                 .user(user)
+                .balance(0)
                 .build();
 
         log.info(bankAccount.toString());

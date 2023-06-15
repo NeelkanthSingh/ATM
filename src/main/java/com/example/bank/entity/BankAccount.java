@@ -17,7 +17,7 @@ public class BankAccount{
     private Integer accountID;
     private LocalDateTime createdAt;
     private Boolean isActive;
-    private Integer balance;
+    private Integer balance=0;
     @ManyToOne
     private User user;
 }

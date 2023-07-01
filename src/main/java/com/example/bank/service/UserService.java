@@ -1,10 +1,10 @@
 package com.example.bank.service;
 
 import com.example.bank.controller.BankController;
-import com.example.bank.entity.User;
+import com.example.bank.entity.Customer;
 import com.example.bank.exception.SQLException;
-import com.example.bank.model.UserModel;
-import com.example.bank.repository.UserRepository;
+import com.example.bank.model.CustomerModel;
+import com.example.bank.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -16,30 +16,30 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService {
 
-    private final UserRepository userRepository;
+    private final CustomerRepository customerRepository;
     private final BankController bankController;
     private final PasswordEncoder passEncoder;
 
-    public ResponseEntity<String> registerUser(UserModel userModel) throws RuntimeException{
-        User user = User.builder()
-                .name(userModel.getName())
-                .age(userModel.getAge())
-                .email(userModel.getEmail())
-                .city(userModel.getCity())
-                .phoneNumber(userModel.getPhoneNumber())
-                .gender(userModel.getGender())
-                .password(passEncoder.encode(userModel.getPassword()))
+    public ResponseEntity<String> registerUser(CustomerModel customerModel) throws RuntimeException{
+        Customer customer = Customer.builder()
+                .name(customerModel.getName())
+                .age(customerModel.getAge())
+                .email(customerModel.getEmail())
+                .city(customerModel.getCity())
+                .phoneNumber(customerModel.getPhoneNumber())
+                .gender(customerModel.getGender())
+                .password(passEncoder.encode(customerModel.getPassword()))
                 .build();
 
-        log.info(user.toString());
+        log.info(customer.toString());
         try{
-            userRepository.save(user);
+            customerRepository.save(customer);
         }catch (RuntimeException ex){
             throw new SQLException("User cannot be registered", ex.getCause());
         }
 
         try {
-            bankController.openBankAccount(user);
+            bankController.openBankAccount(customer);
         } catch (RuntimeException ex){
             log.info("User is registered");
             throw new RuntimeException("User is registered but bank account could not be opened", ex.getCause());

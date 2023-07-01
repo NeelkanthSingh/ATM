@@ -1,6 +1,6 @@
 package com.example.bank.controller;
 
-import com.example.bank.entity.User;
+import com.example.bank.entity.Customer;
 import com.example.bank.service.BankService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ public class BankController {
     private final BankService bankService;
 
     @PostMapping ("open")
-    public void openBankAccount(User user) throws RuntimeException{
+    public void openBankAccount(Customer user) throws RuntimeException{
         bankService.openAccount(user);
     }
 }

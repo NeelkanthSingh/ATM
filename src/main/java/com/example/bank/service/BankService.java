@@ -1,7 +1,7 @@
 package com.example.bank.service;
 
 import com.example.bank.entity.BankAccount;
-import com.example.bank.entity.User;
+import com.example.bank.entity.Customer;
 import com.example.bank.exception.SQLException;
 import com.example.bank.repository.BankRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,12 +17,12 @@ public class BankService {
 
     private final BankRepository bankRepository;
 
-    public void openAccount(User user) throws RuntimeException{
+    public void openAccount(Customer customer) throws RuntimeException{
         BankAccount bankAccount = BankAccount
                 .builder()
                 .createdAt(LocalDateTime.now())
+                .customerAssociated(customer)
                 .isActive(true)
-                .user(user)
                 .balance(0)
                 .build();
 

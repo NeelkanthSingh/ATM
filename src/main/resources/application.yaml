@@ -3,11 +3,10 @@ spring:
     exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
   #Postgresql properties
   datasource:
-    url: jdbc:postgresql://192.168.1.28:5432/postgres
+    url: jdbc:postgresql://192.168.1.31:5432/postgres
     username: amigoscode
     password: password
     driver-class-name: org.postgresql.Driver
-  #MongoDB properties
   #JPA properties
   jpa:
     hibernate:

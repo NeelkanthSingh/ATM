@@ -1,23 +1,42 @@
 package com.example.bank.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Builder
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class BankAccount{
 
     @Id
     @GeneratedValue
-    private Integer accountID;
+    private Integer id;
+
+    @NotNull
     private LocalDateTime createdAt;
+
+    private LocalDateTime lastTransaction;
+
+    @NotNull
     private Boolean isActive;
-    private Integer balance=0;
+
+    @NotNull
+    private Integer balance;
+
+    @NotNull
     @ManyToOne
-    private User user;
+    @JoinColumn(name = "customer_id")
+    private Customer customerAssociated;
+
+    @OneToMany(mappedBy = "bankAccountID", cascade = CascadeType.ALL)
+    private Set<TransactionAmount> transactionAmounts = new HashSet<>();
+
 }

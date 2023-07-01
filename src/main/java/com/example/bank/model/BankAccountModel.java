@@ -1,7 +1,6 @@
 package com.example.bank.model;
 
-import com.example.bank.entity.User;
-import jakarta.persistence.Column;
+import com.example.bank.entity.Customer;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -19,6 +18,6 @@ public class BankAccountModel {
     private Boolean isActive;
     private Integer balance;
     @NotNull
-    private User user;
+    private Customer customer;
 
 }

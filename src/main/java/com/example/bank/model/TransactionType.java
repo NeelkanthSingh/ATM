@@ -1,6 +1,7 @@
 package com.example.bank.model;
 
 public enum TransactionType {
-    Deposit,
-    Withdraw
+    DEPOSIT,
+    WITHDRAW,
+    TRANSFER
 }

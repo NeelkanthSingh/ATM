@@ -7,7 +7,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserModel {
+public class CustomerModel {
     @NotBlank
     private String name;
 
